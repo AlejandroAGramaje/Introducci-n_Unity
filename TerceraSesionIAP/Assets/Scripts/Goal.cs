@@ -1,24 +1,23 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GoalPlatform : MonoBehaviour
+public class GoalDetector : MonoBehaviour
 {
-    public GameObject winTextUI;
+    public GameObject victoryPanel;
 
-    void Start()
-    {
-        if (winTextUI != null) {winTextUI.SetActive(false); }
-             
-    }
-
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("¡Nivel completado!");
-            if (winTextUI != null)
-            {
-                winTextUI.SetActive(true);
-            }
+            Time.timeScale = 0f; 
+            if (victoryPanel != null)
+                victoryPanel.SetActive(true);
         }
+    }
+
+    public void RestartLevel()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
