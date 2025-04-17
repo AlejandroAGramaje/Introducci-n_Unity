@@ -5,7 +5,7 @@ public class SceneLoader : MonoBehaviour
 {
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("Level1"); // o el nombre de tu escena principal
+        SceneManager.LoadScene("Level1"); 
     }
 }
 
