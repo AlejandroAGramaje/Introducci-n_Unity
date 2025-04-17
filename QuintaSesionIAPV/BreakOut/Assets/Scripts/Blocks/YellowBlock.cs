@@ -34,6 +34,8 @@ public class YellowBlock : MonoBehaviour
                 Destroy(gameObject); // destruye el bloque
 
             }
+            FindObjectOfType<TexturePainter>().PintarColorAleatorio();
+
 
             UIManager.instance.AddScore(10);
             LevelManager.numInitialBlocks--;

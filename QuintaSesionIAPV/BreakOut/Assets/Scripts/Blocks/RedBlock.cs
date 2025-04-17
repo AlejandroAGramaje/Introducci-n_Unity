@@ -10,7 +10,7 @@ public class RedBlock : MonoBehaviour
     void Start()
     {
         LevelManager.numInitialBlocks++;
-        audioSource = GetComponent<AudioSource>(); // o puedes usar AddComponent<AudioSource>() si no lo tiene
+        audioSource = GetComponent<AudioSource>(); 
     }
 
     void OnCollisionEnter(Collision collision)
@@ -25,14 +25,16 @@ public class RedBlock : MonoBehaviour
         if (spark != null)
         {
             GameObject sparkInstance = Instantiate(spark, transform.position, Quaternion.identity);
-            Destroy(sparkInstance, 1f); // ← asegúrate de este paso o de usar Stop Action = Destroy
-            Destroy(gameObject); // destruye el bloque
+            Destroy(sparkInstance, 1f);
+            Destroy(gameObject); 
 
         }
+        FindObjectOfType<TexturePainter>().PintarColorAleatorio();
 
-        // Destruir el bloque con retraso para que se oiga el sonido
+
+       
         UIManager.instance.AddScore(10);
         LevelManager.numInitialBlocks--;
-        Destroy(gameObject, 0.1f); // da tiempo al sonido a reproducirse
+        Destroy(gameObject, 0.1f);
     }
 }
